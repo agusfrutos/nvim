@@ -10,7 +10,6 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-
 require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -19,11 +18,37 @@ require("lazy").setup({
 		end
 	},
 	{
-		'nvim-telescope/telescope.nvim', tag = '0.1.5',
-		-- or                              , branch = '0.1.x',
+		"savq/melange-nvim"
+	},
+	{
+		-- Formatting
+		"stevearc/conform.nvim"
+	},
+	{
+		'nvim-telescope/telescope.nvim',
+		 tag = '0.1.5',
 		dependencies = { 'nvim-lua/plenary.nvim' }
-	}
-})
+	},
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
+	},
+	{
+		"epwalsh/obsidian.nvim",
+		version = "*",
+		lazy = true,
+		ft = "markdown",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+			},
+		},
+		{
+			"ryanoasis/vim-devicons"
+		}
+	})
 
 
 require("lazy").setup(plugins, opts)
